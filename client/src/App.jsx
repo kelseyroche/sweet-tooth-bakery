@@ -1,40 +1,47 @@
-// import { useEffect, useState } from 'react'
-// import { client } from './sanityClient'
-// import HomePage from './components/HomePage'
+// import React from "react";
+// import HomePage from "./components/HomePage";
+// import Menu from "./components/Menu";
+// import About from "./components/About";
+// import Contact from "./components/Contact";
+
+
 
 // function App() {
-//   const [data, setData] = useState(null)
-
-//   useEffect(() => {
-//     client.fetch(`*[_type == "homePage"][0]`).then((res) => {
-//       setData(res)
-//     })
-//   }, [])
-
 //   return (
-//     <div>
-//       <h1>Sweet Tooth Bakery 🍰</h1>
-//       {data ? (
-//         <div>
-//           <h2>{data.heading}</h2>
-//           <p>{data.description}</p>
-//         </div>
-//       ) : (
-//         <p>Loading...</p>
-//       )}
+//     <div className="App">
+//       <HomePage />
+//       <Menu />
+//       <About />
+//       <Contact />
 //     </div>
-//   )
+//   );
 // }
 
-// export default App
+// export default App;
 
-import React from "react";
 import HomePage from "./components/HomePage";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <HomePage />
+      <Header />
+      <main>
+        <section id="home">
+          <HomePage />
+        </section>
+        <section id="about">
+          <About />
+        </section>
+        <section id="contact">
+          <Contact />
+        </section>
+      </main>
+      <Footer />
     </div>
   );
 }

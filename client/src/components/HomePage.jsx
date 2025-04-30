@@ -16,7 +16,10 @@ export default function HomePage() {
           }
         }`
       )
-      .then((res) => setData(res))
+      .then((res) => {
+        console.log("Sanity response:", res);
+        setData(res);
+      })
       .catch(console.error);
   }, []);
 
