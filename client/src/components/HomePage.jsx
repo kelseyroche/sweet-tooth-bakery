@@ -1,36 +1,31 @@
+
 import { useEffect, useState } from "react";
 import { client } from "../sanityClient";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+// import "./HomePage.css"; // for styling
 
-export default function HomePage() {
-  const [data, setData] = useState(null);
+function HomePage() {
+  const [galleryImages, setGalleryImages] = useState([]);
 
   useEffect(() => {
     client
-      .fetch(
-        `*[_type == "homePage"][0]{
-          headline,
-          heroImage{
-            asset->{
-              url
-            }
-          }
-        }`
-      )
-      .then((res) => {
-        console.log("Sanity response:", res);
-        setData(res);
-      })
+      .fetch(`*[_type == "homeGallery"][0].images[].asset->{url}`)
+      .then((data) => setGalleryImages(data))
       .catch(console.error);
   }, []);
 
-  if (!data) return <p>Loading homepage content...</p>;
-
   return (
     <div className="homepage">
-      <h1>{data.headline}</h1>
-        {data.heroImage?.asset?.url && (
-        <img src={data.heroImage.asset.url} alt="Bakery hero" />
-        )}
+      <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false}>
+        {galleryImages.map((img, index) => (
+          <div key={index}>
+            <img src={img.url} alt={`Gallery image ${index + 1}`} className="carousel-img" />
+          </div>
+        ))}
+      </Carousel>
     </div>
   );
 }
+
+export default HomePage;

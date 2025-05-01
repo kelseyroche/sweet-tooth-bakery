@@ -1,18 +1,36 @@
-import { Link } from "react-scroll";
-import { useNavigate } from "react-router-dom";
-import "./Header.css";
 
-export default function Header() {
-  const navigate = useNavigate();
+// import { Link as RouterLink } from "react-router-dom";
+// // import { Link } from "react-scroll"; // 👈 you can remove this if unused
 
+// function Header({ scrollToAbout, scrollToContact }) {
+//   return (
+//     <header className="main-header">
+//       <img src="/assets/logo.png" alt="Bakery Logo" className="bakery-logo" />
+//       <nav>
+//         <button onClick={scrollToAbout}>About</button>
+//         <button onClick={scrollToContact}>Contact</button>
+//         <RouterLink to="/menu">Menu</RouterLink>
+//       </nav>
+//     </header>
+//   );
+// }
+
+// export default Header;
+
+import { Link as RouterLink } from "react-router-dom";
+
+function Header() {
   return (
-    <header className="header">
-      <h1 className="logo">Sweet Tooth Bakery</h1>
+    <header className="main-header">
+      <img src="/logo1.png" alt="Bakery Logo" className="bakery-logo" />
       <nav>
-        <Link to="about" smooth={true} duration={500}>About</Link>
-        <Link to="contact" smooth={true} duration={500}>Contact</Link>
-        <button onClick={() => navigate("/menu")}>Menu</button>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/#about">About</RouterLink>
+        <RouterLink to="/#contact">Contact</RouterLink>
+        <RouterLink to="/menu">Menu</RouterLink>
       </nav>
     </header>
   );
 }
+
+export default Header;
