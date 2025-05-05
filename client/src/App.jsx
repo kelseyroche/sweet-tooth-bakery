@@ -56,6 +56,8 @@ import Contact from "./components/Contact";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Menu from "./components/Menu";
+import Reviews from './components/Reviews';
+
 import "./App.css";
 
 function App() {
@@ -87,11 +89,13 @@ function App() {
             <>
               <HomePage />
               <section ref={aboutRef} id="about">
-                <About />
+              <About />
               </section>
               <div className="section-divider"></div>
               <section ref={contactRef} id="contact">
-                <Contact />
+              <Reviews />
+              <div className="section-divider"></div>
+              <Contact />
               </section>
             </>
           }
